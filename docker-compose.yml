@@ -23,10 +23,11 @@ services:
         deploy:
             mode: global
             update_config:
-                parallelism: 2
+                parallelism: 5
                 delay: 5s
                 order: start-first
         ports:
+        
             - "80:80"
         networks:
             - clarusnet
