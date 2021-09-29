@@ -216,6 +216,7 @@ Resources:
               APP_REPO_NAME=${APP_REPO_NAME}
               EOF
               curl -o "docker-compose.yml" -L ${GIT_FILE_URL}docker-compose.yml
+              curl -o "Dockerfile" -L ${GIT_FILE_URL}Dockerfile
               curl -o "init.sql" -L ${GIT_FILE_URL}init.sql
               docker-compose config | docker stack deploy --with-registry-auth -c - phonebook
             - ECR_REGISTRY: !Sub ${AWS::AccountId}.dkr.ecr.${AWS::Region}.amazonaws.com
