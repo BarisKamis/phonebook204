@@ -1,0 +1,37 @@
+version: "3.7"
+
+services:
+  database:
+    image: mysql:5.7
+    volumes:
+      - db_data:/var/lib/mysql
+    container_name: database
+    environment: 
+      MYSQL_ROOT_PASSWORD: P123456p
+      MYSQL_DATABASE: phonebook_db
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: Clarusway_1
+    configs:
+      - my_config
+      - my_other_config
+    networks: 
+      - clarusnet
+  myapp:
+    image: bariskamis93/phonebookapi:latest
+    container_name: myapp
+    restart: always
+    mode: global
+    depends_on: 
+      - database
+    ports:
+      - "80:80"
+    networks:
+      - clarusnet
+networks:
+  clarusnet:
+    driver: bridge
+configs:
+  my_config:
+    file: ./init.sql
+  my_other_config:
+    external: true
