@@ -11,9 +11,6 @@ services:
       MYSQL_DATABASE: phonebook_db
       MYSQL_USER: admin
       MYSQL_PASSWORD: Clarusway_1
-    configs:
-      - my_config
-      - my_other_config
     networks: 
       - clarusnet
   myapp:
@@ -30,8 +27,3 @@ services:
 networks:
   clarusnet:
     driver: bridge
-configs:
-  my_config:
-    file: ./init.sql
-  my_other_config:
-    external: true

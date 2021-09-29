@@ -85,7 +85,7 @@ Resources:
     Type: "AWS::EC2::LaunchTemplate"
     Properties:
       LaunchTemplateData:
-        ImageId: ami-0858bef4ba3225b69
+        ImageId: ami-087c17d1fe0178315
         InstanceType: t2.micro
         KeyName: !Ref KeyPairName
         IamInstanceProfile: 
@@ -123,7 +123,7 @@ Resources:
     Type: "AWS::EC2::LaunchTemplate"
     Properties:
       LaunchTemplateData:
-        ImageId: ami-038b5c5d2ad6a5090
+        ImageId: ami-087c17d1fe0178315
         InstanceType: t2.micro
         KeyName: !Ref KeyPairName
         IamInstanceProfile: 
@@ -160,7 +160,7 @@ Resources:
   DockerManager1:
     Type: AWS::EC2::Instance
     Properties:
-      ImageId: ami-038b5c5d2ad6a5090
+      ImageId: ami-087c17d1fe0178315
       InstanceType: t2.micro
       KeyName: !Ref KeyPairName
       IamInstanceProfile: !Ref EC2ConnectProfile
@@ -219,7 +219,7 @@ Resources:
               curl -o "init.sql" -L ${GIT_FILE_URL}init.sql
               docker-compose config | docker stack deploy --with-registry-auth -c - phonebook
             - ECR_REGISTRY: !Sub ${AWS::AccountId}.dkr.ecr.${AWS::Region}.amazonaws.com
-              APP_REPO_NAME: clarusway-repo/phonebook-app
+              APP_REPO_NAME: bariskamis93/phonebookapi
               GITHUB_REPO: https://github.com/BarisKamis/phonebook204.git
               GIT_FILE_URL: https://raw.githubusercontent.com/BarisKamis/phonebook204/master/
   DockerManager2:
@@ -270,7 +270,7 @@ Resources:
         -                        
           Key: Name
           Value: !Sub Docker Worker 2nd of ${AWS::StackName}    
-  Outputs:
+Outputs:
   1stDockerManagerDashboard:
     Description: Dashboard for Docker Swarm
     Value: !Sub 
